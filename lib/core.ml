@@ -172,4 +172,5 @@ type epoch_data = {
   own_name         : string option ;
   master_secret    : master_secret ;
   session_id       : Cstruct.t ;
+  extended_ms      : bool ;
 } with sexp
