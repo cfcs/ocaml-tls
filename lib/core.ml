@@ -75,6 +75,7 @@ type extension =
   | Padding of int
   | SignatureAlgorithms of (Hash.hash * signature_algorithm_type) list
   | UnknownExtension of (int * Cstruct.t)
+  | ExtendedMasterSecret
   with sexp
 
 type ('a, 'b) hello = {
