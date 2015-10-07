@@ -177,3 +177,6 @@ val sexp_of_epoch : epoch -> Sexplib.Sexp.t
 (** [epoch state] is [epoch], which contains the session
     information. *)
 val epoch : state -> epoch
+
+val encrypt : tls_version -> crypto_state -> content_type -> Ctypes.t
+
