@@ -24,7 +24,14 @@ module Unix : sig
       conditions.  The underlying file descriptors are not closed. *)
 
   (** Abstract type of a session *)
-  type t
+  type t = {
+    fd             : Lwt_unix.file_descr ;
+    tracer         : tracer option ;
+    mutable state  : [ `Active of Tls.Engine.state
+                     | `Eof
+                     | `Error of exn ] ;
+    mutable linger : Cstruct.t option ;
+  }
 
   (** {2 Constructors} *)
 

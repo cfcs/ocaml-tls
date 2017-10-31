@@ -37,7 +37,7 @@
 (** {1 Abstract state type} *)
 
 (** The abstract type of a TLS state. *)
-type state
+type state = State.state
 
 (** {1 Constructors} *)
 
@@ -182,3 +182,8 @@ val sexp_of_epoch : epoch -> Sexplib.Sexp.t
 (** [epoch state] is [epoch], which contains the session
     information. *)
 val epoch : state -> epoch
+
+val encrypt : Core.tls_version -> State.crypto_state -> Packet.content_type ->
+  Cstruct.t -> State.crypto_state * Cstruct.t
+(** [encrypt version state ty plaintext] is a single TLS record
+    encrypted using [state], and the advanced state. *)
